@@ -1,14 +1,8 @@
 var searchButton = document.getElementById("submit-btn");
 var searchInput  = document.getElementById("state");
 var searchInput2 = document.getElementById("city");
-var firstAlert   = document.getElementById("first-alert");
-var secondAlert  = document.getElementById("second-alert");
-var thirdAlert   = document.getElementById("third-alert");
-var forthAlert   = document.getElementById("forth-alert");
-var fifthAlert   = document.getElementById("fifth-alert");
-var sixthAlert   = document.getElementById("sixth-alert");
-var seventhAlert = document.getElementById("seventh-alert");
-var eighthAlert  = document.getElementById("eighth-alert");
+var alert   = document.getElementById("alert");
+
 searchButton.addEventListener("click", findPowerOutageAlert);
 searchInput.addEventListener("keyup", enterPressed);
 
@@ -37,34 +31,49 @@ function findPowerOutageAlert() {
 
     xhr.onload = function () {
         var data = JSON.parse(this.response);
-        firstAlert.innerHTML  = "No Data";
-        secondAlert.innerHTML = "";
-        thirdAlert.innerHTML  = "";
-        forthAlert.innerHTML  = "";
-        fifthAlert.innerHTML  = "";
-        sixthAlert.innerHTML  = "";
-        seventhAlert.innerHTML= "";
-        eighthAlert.innerHTML = "";
+        alert.innerHTML  = "No data";
 
         if (data.MaintananceALert.length == 1) {
-            firstAlert.innerHTML  = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration;
-            secondAlert.innerHTML = "";
-            thirdAlert.innerHTML  = "";
-            forthAlert.innerHTML  = "";
-            fifthAlert.innerHTML  = "";
-            sixthAlert.innerHTML  = "";
-            seventhAlert.innerHTML= "";
-            eighthAlert.innerHTML = "";
+            alert.innerHTML = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration;
 
-        } else {
-            firstAlert.innerHTML  = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration + "<br>" + "<br>";
-            secondAlert.innerHTML = data.MaintananceALert[1][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[1][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[1][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[1][0].Duration + "<br>";
-            thirdAlert.innerHTML  = data.MaintananceALert[2][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[2][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[2][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[2][0].Duration + "<br>";
-            forthAlert.innerHTML  = data.MaintananceALert[3][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[3][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[3][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[3][0].Duration + "<br>";
-            fifthAlert.innerHTML  = data.MaintananceALert[4][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[4][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[4][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[4][0].Duration + "<br>";
-            sixthAlert.innerHTML  = data.MaintananceALert[5][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[5][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[5][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[5][0].Duration + "<br>";
-            seventhAlert.innerHTML= data.MaintananceALert[6][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[6][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[6][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[6][0].Duration + "<br>";
-            eighthAlert.innerHTML = data.MaintananceALert[7][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[7][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[7][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[7][0].Duration + "<br>";
+        } else if (data.MaintananceALert.length == 2) {
+            alert.innerHTML = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[1][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[1][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[1][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[1][0].Duration;
+
+        } else if (data.MaintananceALert.length == 3) {
+            alert.innerHTML = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[1][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[1][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[1][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[1][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[2][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[2][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[2][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[2][0].Duration;
+
+        } else if (data.MaintananceALert.length == 4) {
+            alert.innerHTML = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[1][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[1][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[1][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[1][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[2][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[2][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[2][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[2][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[3][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[3][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[3][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[3][0].Duration;
+
+        } else if (data.MaintananceALert.length == 5) {
+            alert.innerHTML = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[1][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[1][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[1][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[1][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[2][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[2][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[2][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[2][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[3][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[3][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[3][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[3][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[4][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[4][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[4][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[4][0].Duration;
+
+        } else if (data.MaintananceALert.length == 6) {
+            alert.innerHTML = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[1][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[1][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[1][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[1][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[2][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[2][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[2][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[2][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[3][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[3][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[3][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[3][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[4][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[4][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[4][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[4][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[5][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[5][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[5][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[5][0].Duration;
+
+        } else if (data.MaintananceALert.length == 7) {
+            alert.innerHTML = "Total Preventive Maintenance Scheduled: " + data.MaintananceALert.length + "<br>" + "<br>" + data.MaintananceALert[0][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[0][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[0][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[0][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[1][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[1][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[1][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[1][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[2][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[2][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[2][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[2][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[3][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[3][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[3][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[3][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[4][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[4][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[4][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[4][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[5][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[5][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[5][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[5][0].Duration + "<br>" + "<br>" +
+                               data.MaintananceALert[6][0].Title + "<br>" + '<img src="images/icon-area.png"/>' + " : " + data.MaintananceALert[6][0].area + "<br>" + '<img src="images/icon-date.png"/>' + " : " + data.MaintananceALert[6][0].DateandTime + "<br>" + '<img src="images/icon-duration.png"/>' + " : " + data.MaintananceALert[6][0].Duration;
         }
         if (xhr.status >= 200 && xhr.status < 400) {
             console.log(data);
