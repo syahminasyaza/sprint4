@@ -208,7 +208,7 @@ $results = $db_handle->runQuery($query);
 					<div class="forecast-container">
 						<div class="today forecast">
 							<div class="forecast-header">
-								<div class="title">Power Outage</div>
+								<div class="title">Power Outage Alert</div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 
@@ -219,30 +219,9 @@ $results = $db_handle->runQuery($query);
 								<br>
 								<center>
 								<div class="temperature">
-									<div id ="first-alert" class="num">---</div>
+									<div id ="alert" class="num">---</div>
 								</div>	
 								</div>
-								<div class="temperature">
-								      <div id="second-alert"></div>
-								 </div>
-							    <div class="temperature">
-							      <div id="third-alert"></div>
-							    </div>
-							    <div class="temperature">
-							      <div id="forth-alert"></div>
-							    </div>
-							    <div class="temperature">
-							      <div id="fifth-alert"></div>
-							    </div>
-							    <div class="temperature">
-							      <div id="sixth-alert"></div>
-							    </div>
-							    <div class="temperature">
-							      <div id="seventh-alert"></div>
-							    </div>
-							    <div class="temperature">
-							      <div id="eighth-alert"></div>
-							    </div>
 							    <br>
 							    </center>
 							    <!-- <img src="images/icon-sun.png" alt=""><span id="morning-div">&nbsp;</span>
