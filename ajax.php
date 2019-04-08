@@ -19,7 +19,7 @@ $db_handle = new DBController();
 
 ?>
 
-		<option value="<?php echo $city["city_id"].$city["cityID"]; ?>"><?php echo $city["city"]; ?></option>
+		<option value="<?php echo $city["city_id"].$city["cityID"].$city["city"]; ?>"><?php echo $city["city"]; ?></option>
 
 <?php
 	}
