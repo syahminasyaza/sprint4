@@ -23,7 +23,7 @@ function findPowerOutageAlert() {
     today = dd + '/' + mm + '/' + yyyy;
     //set the url request
     var api = "https://api.oip.tm.com.my/app/t/malaysia.open.data/tnb/1.0.0/power?stateID=";
-    var sum = api + searchInput.value + "&areaID=" + searchInput2.value.slice(12) + "&startDate=" + today + "&endDate=" + today;
+    var sum = api + searchInput.value + "&areaID=" + searchInput2.value.slice(12, 15) + "&startDate=" + today + "&endDate=" + today;
     //make XMLHttpRequest
     var xhr = new XMLHttpRequest();
     xhr.open('GET', sum);
