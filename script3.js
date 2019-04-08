@@ -1,12 +1,10 @@
 
 // let searchButton = document.getElementById("submit-btn");
 var searchInput1 = document.getElementById("city");
-var searchInput3  = document.getElementById("state");
-
-
-var formattedAddress= document.getElementById("locationname");
-var latitude = document.getElementById("latitude");
-var longitude = document.getElementById("longitude");
+var searchInput3 = document.getElementById("state");
+var formattedAddress = document.getElementById("city-name2");
+var latitude = document.getElementById("lat");
+var longitude = document.getElementById("long");
 
 searchButton.addEventListener("click", findWeatherDetails);
 searchInput1.addEventListener("keyup", enterPressed);
@@ -26,10 +24,9 @@ function findWeatherDetails() {
     request = new XMLHttpRequest();
     var key = "&key=RND-trial";
     var format = "&format=json" ;
-    // var limit = "&limit=5"
     
 
-    var sum = api + searchInput1.value.slice(15)  + key + format ;
+    var sum = api + searchInput1.value.slice(15) + key + format ;
 
     var request;
     request = new XMLHttpRequest();
@@ -43,9 +40,10 @@ function findWeatherDetails() {
         var data = JSON.parse(this.response);
         
         //output geolocation
-        formattedAddress.innerHTML = data.output.city + "," + data.output.state ;
-        latitude.innerHTML = "Latitude:"+ " "+ data.output.latitude;
-        longitude.innerHTML = "Longitude:" + " " + data.output.longitude
+        formattedAddress.innerHTML = " " + data.output.formattedAddress; 
+        //formattedAddress2.innerHTML = data.output.city +", " + data.output.state;
+        latitude.innerHTML = "Latitude: " + data.output.latitude;
+        longitude.innerHTML = "Longitude: " + data.output.longitude
 
 
 
