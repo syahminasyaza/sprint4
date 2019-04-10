@@ -15,8 +15,8 @@ let temperature = document.getElementById("temp");
 let morning = document.getElementById("morning-div");
 let afternoon = document.getElementById("afternoon-div");
 let night = document.getElementById("night-div");
-let latitude = document.getElementById("lat");
-let longitude = document.getElementById("long");
+// let latitude = document.getElementById("lat");
+// let longitude = document.getElementById("long");
 
 searchBtn.addEventListener("click", findWeatherDetails);
 search_Input.addEventListener("keyup", enterPressed);
@@ -43,14 +43,13 @@ function findWeatherDetails() {
 
 function theResponse(response) {
   let jsonObject = JSON.parse(response);
-  cityName.innerHTML = jsonObject.results[0].locationname + ", " + jsonObject.results[0].locationrootname;
-  //temperature.innerHTML = parseInt(jsonObject.main.temp - 273) + "°C";
+
   temperature.innerHTML = jsonObject.results[3].value + "°C/" + jsonObject.results[4].value + "°C";
   morning.innerHTML = " " + jsonObject.results[0].value;
   afternoon.innerHTML = jsonObject.results[1].value;
   night.innerHTML = " " + jsonObject.results[2].value;
-  lat.innerHTML = " Latitude:" + " " + jsonObject.results[0].latitude;
-  long.innerHTML = "Longitude:" + " " + jsonObject.results[0].longitude;
+  // lat.innerHTML = " Latitude:" + " " + jsonObject.results[0].latitude;
+  // long.innerHTML = "Longitude:" + " " + jsonObject.results[0].longitude;
 }
 
 
@@ -70,12 +69,7 @@ function httpRequestAsync(url, callback)
 
         httpRequest.setRequestHeader("BEToken", "METToken 4a4d69b92255ffe7bcedd8afa9f37b8eed1c48ee");
         httpRequest.setRequestHeader("Authorization", "Bearer 0937382d-b291-3fc3-8bb6-6d9b30784e81");
-        //httpRequest.setRequestHeader("Origin", "api.oip.tm.com.my");
         httpRequest.setRequestHeader("Access-Control-Allow-Origin", "*");
-        //httpRequest.setRequestHeader("Origin", "api.met.gov.my");
-        //httpRequest.setRequestHeader("Authorization", "METToken ee0613f2516ccdd7040954e3807e3831b369bfea");
-
-        //httpRequest.setRequestHeader("cache-control", "no-cache");
         httpRequest.setRequestHeader("Content-Type", "application/json");
       
     httpRequest.send();
