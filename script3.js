@@ -19,9 +19,6 @@ function enterPressed(event) {
 function findWeatherDetails() {
 
     var api = "https://api.oip.tm.com.my/app/t/tm.com.my/tmgeocoding/1.0/One?q=";
-  
-  
-    request = new XMLHttpRequest();
     var key = "&key=RND-trial";
     var format = "&format=json" ;
     
